@@ -1,6 +1,6 @@
 ﻿@page "/categories/{id:int}"
 @inject ApplicationDbContext Context
-@attribute [RenderModeInteractiveServer]
+@rendermode InteractiveServer
 
 @if (Model is null)
 {

@@ -1,7 +1,7 @@
 ﻿@page "/categories/create"
 @inject ApplicationDbContext Context
 @inject NavigationManager Navigation
-@attribute [RenderModeInteractiveServer]
+@rendermode InteractiveServer
 
 <h1>Nova categoria</h1>
 <EditForm Model="@Model" OnValidSubmit="OnValidSubmitAsync">
