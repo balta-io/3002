@@ -1,0 +1,40 @@
+﻿@page "/categories/{id:int}"
+@inject ApplicationDbContext Context
+@attribute [RenderModeInteractiveServer]
+
+@if (Model is null)
+{
+    <p class="text-center">
+        <em>Categoria não encontrada</em>
+    </p>
+}
+else
+{
+    <h1>@Model.Title (@Model.Id)</h1>
+    <EditForm Model="@Model">
+
+        <div class="mb-3">
+            <label class="form-label">Nome da categoria</label>
+            <InputText @bind-Value="Model.Title" class="form-control" readonly/>
+        </div>
+
+        <a href="/categories">Voltar</a>
+    </EditForm>
+}
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    public Category? Model { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model = await Context
+            .Categories
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == Id);
+    }
+
+}
