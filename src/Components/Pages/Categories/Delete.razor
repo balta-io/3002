@@ -2,6 +2,7 @@
 @inject ApplicationDbContext Context
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
+@* @attribute [Authorize(Roles = "ADMIN")] *@
 
 @if (Model is null)
 {
@@ -13,13 +14,13 @@ else
 {
     <h1>@Model.Title (@Model.Id)</h1>
     <EditForm Model="@Model" OnValidSubmit="OnValidSubmit">
-        <DataAnnotationsValidator/>
-        <ValidationSummary/>
+        <DataAnnotationsValidator />
+        <ValidationSummary />
 
         <div class="mb-3">
             <label class="form-label">Nome da categoria</label>
             <InputText @bind-Value="Model.Title" class="form-control" readonly />
-            <ValidationMessage For="@(() => Model.Title)"/>
+            <ValidationMessage For="@(() => Model.Title)" />
         </div>
 
         <button type="submit" class="btn btn-danger">

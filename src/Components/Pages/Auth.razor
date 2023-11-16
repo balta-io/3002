@@ -10,4 +10,8 @@
 
 <AuthorizeView>
     Hello @context.User.Identity?.Name!
+    <br />
+    admin: @context.User.IsInRole("admin")
+    <br />
+    ADMIN: @context.User.IsInRole("ADMIN")
 </AuthorizeView>

@@ -16,33 +16,43 @@ else
 {
     <table class="table">
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th></th>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var category in Categories)
-        {
-            <tr>
-                <td>@category.Id</td>
-                <td>
-                    <a href="/categories/@category.Id">
-                        @category.Title
-                    </a>
-                </td>
-                <td>
-                    <a href="/categories/edit/@category.Id" class="btn btn-primary">
-                        Editar
-                    </a>
-                    &nbsp;&nbsp;
-                    <a href="/categories/delete/@category.Id" class="btn btn-danger">
-                        Excluir
-                    </a>
-                </td>
-            </tr>
-        }
+            @foreach (var category in Categories)
+            {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>
+                        <a href="/categories/@category.Id">
+                            @category.Title
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/categories/edit/@category.Id" class="btn btn-primary">
+                            Editar
+                        </a>
+                        &nbsp;&nbsp;
+
+                        @* <AuthorizeView>
+                            @if (context.User.IsInRole("admin"))
+                            {
+                                <a href="/categories/delete/@category.Id" class="btn btn-danger">
+                                    Excluir
+                                </a>
+                            }
+                        </AuthorizeView> *@
+
+                        <a href="/categories/delete/@category.Id" class="btn btn-danger">
+                            Excluir
+                        </a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 }

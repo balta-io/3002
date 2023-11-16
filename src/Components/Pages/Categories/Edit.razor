@@ -2,6 +2,7 @@
 @inject ApplicationDbContext Context
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
+@attribute [Authorize]
 
 @if (Model is null)
 {
